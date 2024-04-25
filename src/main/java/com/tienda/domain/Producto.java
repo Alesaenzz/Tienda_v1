@@ -2,22 +2,20 @@ package com.tienda.domain;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "producto")
 
-public class Producto implements Serializable { //serializacion porque se va almacenar ciertos datos en el disco
+public class Producto implements Serializable {
 
-    private static final long serialVersionUID = 1L; //para poder hacer el ciclo de la sumatoria de la producto.
+    private static final long serialVersionUID = 1L;
 
-    @Id //id producto es la llave de la tabla producto. 
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //Los valores generados que estrategia usan, identico a la BD 
-    @Column(name = "id_producto") //decir cual es el nombre en la base de datos. Se hace la asociación 
-    private long idProducto;
-    //private long idCategoria;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_producto")
+    private Long idProducto;
     private String descripcion;
     private String detalle;
     private double precio;
@@ -25,16 +23,17 @@ public class Producto implements Serializable { //serializacion porque se va alm
     private String rutaImagen;
     private boolean activo;
     
-    //asociacion con la tabla de productos 
     @ManyToOne
-    @JoinColumn(name="id_categoria") //esta es la union con la tabla de productos (foreign key)
-    Categoria categoria; //Categoria informacion ID
-
+    @JoinColumn(name="id_categoria")
+    Categoria categoria;
+    
     public Producto() {
+
     }
 
-    public Producto(String descripcion, boolean activo) {
+    public Producto(String descripcion, String rutaImagen, boolean activo) {
         this.descripcion = descripcion;
+        this.rutaImagen = rutaImagen;
         this.activo = activo;
     }
 
