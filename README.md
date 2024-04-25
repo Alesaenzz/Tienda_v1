@@ -1,2 +1,2 @@
-# Tienda_v1
- Tienda Jueves
+# Tienda_v2
+ Codigo para la tienda de Desarrollo de Aplicaciones Web jueves
